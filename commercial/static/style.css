@@ -365,7 +365,35 @@ body {
   margin-bottom: 1rem;
 }
 
-
+@media (min-width: 1350px) {
+  #hub-enterway-container{
+    width: 37%;
+  }
+  .first-article h1 {
+    font-size: 4rem;
+  }
+  .first-article p {
+    max-width: 35ch;
+    font-size: 1.6rem;
+  }
+  .second-article h1 {
+    font-size: 3rem;
+  }
+  .second-article p {
+    max-width: 35ch;
+    font-size: 1.8rem;
+  }
+  #bottom-row p {
+    font-size: 1.7rem;
+    max-width: 50ch;
+  }
+  #row-3 #book{
+    width: 8rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  
+  }
+}
 
 
 

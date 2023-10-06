@@ -76,18 +76,18 @@
 <div id="row-{{ forloop.counter }}">
     <div id="left-column">
         <div id="top-row">
-            <h1>Style {{ forloop.counter }}</h1>
             <h2>{{ style.name }}</h2>
         </div>
-        <div>
-            <a href="{% url 'reservation' %}"><button id="book">Book now</button></a>
-        </div>
+        
         <div id="bottom-row">
             <p>{{ style.description }}</p>
             <p>Capacity: {{ style.capacity }}</p>
             <p>Amenities: {{ style.amenities }}</p>
             <p>Pricing per Hour: {{ style.pricing_per_hour }} IQD</p>
         </div>
+        <div>
+          <a href="{% url 'reservation' %}"><button id="book">Book now</button></a>
+      </div>
     </div>
     <div id="right-column">
         <img src="{{ style.image.url }}" alt="{{ style.name }}">
