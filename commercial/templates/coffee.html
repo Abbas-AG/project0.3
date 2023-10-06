@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>coffee break</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'coffee-style.css' %}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+</head>
+
+<body>
+
+
+
+
+  <!--  navbare  -->
+
+  <nav class="nav">
+    <div class="navbare-container">
+      <a href="{% url  'home' %}"><img class="logo" src="{% static 'images/hub200.png' %}" alt="log-img"></a>
+      <div class="line"></div>
+      <a href="{% url  'home' %}"><img class="back-arrow-img" src="{% static 'images/back arrow.svg' %}" alt="back arrow-svg"></a>
+    </div>
+    <a class="contact" href="{% url  'contact' %}">Contact</a>
+  </nav>
+
+
+  <div id="top-section">
+    <div>
+      <h1 class="coffee-break-title">What Do Coffee Break Offers</h1>
+      <h3 class="coffee-break-paragraph">Where Coffee and other Drinks Take Action.</h3>
+    </div>
+    <img class="coffee-svg" src="{% static 'images/coffee.svg' %}"  alt="coffee-svg">
+  </div>
+
+
+  <div class="main">
+    <ul class="cards">
+      {% for offer in special_offers %}
+        <li class="cards_item">
+          <div class="card">
+            <div class="card_image">
+              <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+            </div>
+            <div class="card_content">
+              <h2 class="card_title">{{ offer.title }}</h2>
+              <p class="card_text">{{ offer.description }}</p>
+              <p class="price">price <span>{{ offer.pricing }}IQD</span></p>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+</div>
+
+
+
+  <footer id="footer">
+    <div class="powered">
+      <h5>Powered by computiq</h5>
+      <span>Hub200</span>
+    </div>
+
+    <div class="rights">
+      <p>&copy; All Rights Reserved</p>
+    </div>
+
+    <div class="icon-container">
+      <a href="#"><img class="icon" src= "{% static 'images/instagram.svg' %}" alt="instagram-sng"></a>
+      <a href="#"><img class="icon" src="{% static 'images/linkedin.svg' %}" alt="linkedin-sng"></a>
+      <a href="#"><img class="icon" src="{% static 'images/facebook.svg' %}" alt="facebook-sng"></a>
+    </div>
+
+  </footer>
+
+
+
+  <script src="{% static 'index.js' %}"></script>
+
+</body>
+
+</html>

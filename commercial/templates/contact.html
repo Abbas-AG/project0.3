@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact form</title>
+
+    <!-- css link -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'contact-style.css' %}">
+
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div id="blue-background"></div>
+
+    <!-- the left white container -->
+    <div id="white-container">
+
+        <form id="contact-form" action="">
+
+            <h1>Get in Touch</h1>
+
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email">
+            <input type="text" placeholder="Subject">
+            <textarea id="" placeholder="Message" ></textarea>
+
+            <button class="btn" type="submit">Submit</button>
+        </form>
+    </div>
+
+
+
+
+
+    <!-- the right blue container -->
+    <div id="blue-container">
+
+        <h2>Contact us</h2>
+
+        <div class="info-item">
+            <img class="location" src="{% static 'images/location.svg' %}" alt="location-svg">
+            <h4>Address</h4>
+        </div>
+
+        <div class="info-item">
+            <img class="phone" src="{% static 'images/phone.svg' %}"  alt="phone-svg">
+            <h4>phone : +964********</h4>
+        </div>
+
+        <div class="info-item">
+            <img class="telegram" src="{% static 'images/telegram.svg' %}" alt="telegram-svg">
+            <h4>Email : info@gmail.com</h4>
+        </div>
+
+        <div class="info-item">
+            <img class="earth" src="{% static 'images/erath.svg' %}" alt="erath-svg">
+            <h4>Website : computiq.tech</h4>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

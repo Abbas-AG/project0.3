@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home page</title>
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+
+  <!--  navbare  -->
+
+  <nav class="nav">
+    <div class="navbare-container">
+      <a href="{% url  'home' %}"><img class="logo" src="{% static 'images/hub200.png' %}" alt="log-img"></a>
+      <div class="line"></div>
+      <a href="{% url  'home' %}"></a>
+    </div>
+    <a class="contact" href="{% url  'contact' %}">Contact</a>
+  </nav>
+
+  <!-- ------------------------ -->
+
+  <div id="first-about">
+    <div class="first-article">
+      <h1>Hub200</h1>
+      <p>Hub200 is a unique space for Iraqi tech and practical communities to network, cooperate, and innovate. It
+        aims to contribute to the digitalization of the Iraqi market and grow talents, creating a community of
+        professionals to lead the next revolution. It serves as a hub for youth to take the lead and develop the
+        technology scene in Iraq.</p>
+    </div>
+
+     <div id="hub-enterway-container">
+      <img src= "{% static 'images/hub enterway.jpg' %}" alt="hub enterway-img">
+     </div>
+  </div>
+
+  
+  <div id="second-about">
+    <div id="hub-enterway-container">
+      <img src= "{% static 'images/lecture.jpg' %}" alt="hub enterway-img">
+    </div>
+
+    <div class="second-article">
+      <h1>What We Offer?</h1>
+      <p>Open Space With an area of 150 meters of
+        open space, it is ready to rent and organize
+        in different styles</p>
+
+      <h1>Lecture Halls</h1>
+      <p> We have 2 well-equipped lecture halls
+        or meeting rooms available</p>
+    </div>
+  </div>
+
+  
+
+  <!-- ------------------------ -->
+
+  
+  {% for style in styles %}
+<div id="row-{{ forloop.counter }}">
+    <div id="left-column">
+        <div id="top-row">
+            <h1>Style {{ forloop.counter }}</h1>
+            <h2>{{ style.name }}</h2>
+        </div>
+        <div>
+            <a href="{% url 'reservation' %}"><button id="book">Book now</button></a>
+        </div>
+        <div id="bottom-row">
+            <p>{{ style.description }}</p>
+            <p>Capacity: {{ style.capacity }}</p>
+            <p>Amenities: {{ style.amenities }}</p>
+            <p>Pricing per Hour: {{ style.pricing_per_hour }} IQD</p>
+        </div>
+    </div>
+    <div id="right-column">
+        <img src="{{ style.image.url }}" alt="{{ style.name }}">
+    </div>
+</div>
+{% endfor %}
+
+<div id="upper">
+  {% for room in rooms %}
+    <div id="room-container">
+        <div id="image-container">
+            <img src="{{ room.image.url }}" alt="{{ room.name }}">
+        </div>
+        <div id="room-title-container">
+            <h1>{{ room.name }}</h1>
+            <a href="{% url 'reservation' %}"><button id="book">Book now</button></a>
+        </div>
+        <div>
+            <p>{{ room.description }}</p>
+            <p>Capacity: {{ room.capacity }}</p>
+            <p>Amenities: {{ room.amenities }}</p>
+            <p>Pricing per Hour: {{ room.pricing_per_hour }} IQD</p>
+        </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+  <div id="row-3">
+    <div id="letf-column">
+
+      <div id="top-row">
+        <h1>Coffee Break</h1>
+      </div>
+
+      <div>
+      <a href="{% url 'coffee' %}"><button id="book">Go To Offers</button></a> 
+      </div>
+
+      <div id="bottom-row">
+        <p>Reserve your Hub200 event space and enjoy budget-friendly,
+          customizable food and drinks. Check out our website for offers.</p>
+      </div>
+    </div>
+
+    <div id="right-column">
+      <img src= "{% static 'images/food.jpg' %}" alt="">
+    </div>
+
+  </div>
+
+
+
+
+  <footer id="footer">
+    <div class="powered">
+      <h5>Powered by computiq</h5>
+      <span>Hub200</span>
+    </div>
+
+    <div class="rights">
+      <p>&copy; All Rights Reserved</p>
+    </div>
+
+    <div class="icon-container">
+      <a href="#"><img class="icon" src= "{% static 'images/instagram.svg' %}" alt="instagram-sng"></a>
+      <a href="#"><img class="icon" src="{% static 'images/linkedin.svg' %}" alt="linkedin-sng"></a>
+      <a href="#"><img class="icon" src="{% static 'images/facebook.svg' %}" alt="facebook-sng"></a>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <script src="{% static 'index.js' %}"></script>
+
+</body>
+
+</html>

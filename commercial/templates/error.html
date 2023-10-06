@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>error page</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'error-style.css' %}">
+
+    <!-- google fonts link -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+
+  <!--  navbare  -->
+
+  <nav class="nav">
+    <div class="navbare-container">
+      <a href="#"><img class="logo" src="{% static 'images/hub200.png' %}" alt="log-img"></a>
+      <div class="line"></div>
+      <a href="#"><img class="back-arrow-img" src="{% static 'images/back arrow.svg' %}" alt="back arrow-svg"></a>
+    </div>
+    <a class="contact" href="#">Contact</a>
+  </nav>
+
+
+    <div class="error-container">
+        <h1 class="error">Error 404</h1>
+        <h2 class="error-message">Something Went Wrong</h2>
+    </div>
+
+    <img class="error-img" src= "{% static 'images/404.svg' %}" alt="error-404">
+
+
+</body>
+
+</html>
