@@ -133,6 +133,6 @@ EMAIL_HOST_PASSWORD = 'your_email_password'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_URLS = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
