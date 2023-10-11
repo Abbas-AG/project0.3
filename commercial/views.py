@@ -7,7 +7,13 @@ from .models import SpecialOffer, Room, Style, CoffeeBreak, Reservation
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')
+    rooms = Room.objects.all()
+    print(rooms[0])
+    styles = Style.objects.all()
+    return render(request, 'index.html', {
+        'rooms': rooms,
+        'styles': styles
+    })
 
 def specialoffer(request):
     special_offers = SpecialOffer.objects.all()
@@ -33,13 +39,14 @@ def coffeebreak(request):
         'coffeebreaks': coffeebreaks
     })
 
-def home(request):
-    rooms = Room.objects.all()
-    styles = Style.objects.all()
-    return render(request, 'home.html', {
-        'rooms': rooms,
-        'styles': styles
-    })
+# def home(request):
+#     rooms = Room.objects.all()
+
+#     styles = Style.objects.all()
+#     return render(request, 'home.html', {
+#         'rooms': rooms,
+#         'styles': styles
+#     })
 
 
 def coffee(request):
