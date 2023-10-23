@@ -50,12 +50,12 @@
         <li class="cards_item">
           <div class="card">
             <div class="card_image">
-              <img src="{{ offer.image.url }}" alt="{{ offer.title }}">
+              <img src="../../{{offer.picture}}" >
             </div>
             <div class="card_content">
-              <h2 class="card_title">{{ offer.title }}</h2>
-              <p class="card_text">{{ offer.description }}</p>
-              <p class="price">price <span>{{ offer.pricing }}IQD</span></p>
+              <h2 class="card_title">{{ offer.name }}</h2>
+              <p class="card_text">{{ offer.menue_items }}</p>
+              <p class="price">price <span>{{ offer.pricing_per_person }}IQD</span></p>
             </div>
           </div>
         </li>

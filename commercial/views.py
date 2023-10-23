@@ -2,7 +2,12 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.core.mail import send_mail
+from django.shortcuts import render
+from .models import Contact, Room, Style, CoffeeBreak, Reservation
+from django.core.mail import send_mail
 from .models import SpecialOffer, Room, Style, CoffeeBreak, Reservation
+from django.template.loader import render_to_string
+
 
 # Create your views here.
 
@@ -36,7 +41,7 @@ def style(request):
 def coffeebreak(request):
     coffeebreaks = CoffeeBreak.objects.all()
     return render(request, 'coffeebreak.html', {
-        'coffeebreaks': coffeebreaks
+            'coffeebreaks': coffeebreaks
     })
 
 # def home(request):
@@ -50,17 +55,31 @@ def coffeebreak(request):
 
 
 def coffee(request):
-    special_offers = SpecialOffer.objects.all()
+    special_offers = CoffeeBreak.objects.all()
     return render(request, 'coffee.html', {
         'special_offers': special_offers
     })
 
 def contact(request):
-    return render(request, 'contact.html')
 
-from django.shortcuts import render
-from .models import Room, Style, CoffeeBreak, Reservation
-from django.core.mail import send_mail
+    if request.method == 'POST':
+        full_name = request.POST.get('full_name')  
+        message = request.POST.get('message')  
+        subject = request.POST.get('subject')
+        email = request.POST.get('email')
+
+        contact = Contact(
+            full_name= full_name,
+            message = message,
+            email = email,
+            subject = subject
+        )
+        contact.save()
+        return redirect("home")
+    
+    else:
+        return render(request, 'contact.html')
+
 
 def reservation(request):
     rooms = Room.objects.all()
@@ -68,33 +87,40 @@ def reservation(request):
     coffee_offers = CoffeeBreak.objects.all()
 
     if request.method == 'POST':
-        # Get form data from POST request
-        event_space_1_id = request.POST.get('event_space_1')  
-        event_space_2_id = request.POST.get('event_space_2')  
+        event_room_id = request.POST['event_room']
+        event_style_id = request.POST['event_style']
+        coffee_break_id = request.POST['coffee_offer']
+        event_room = request.POST.get('event_room')
         date_and_time = request.POST.get('date_and_time')
         number_of_attendees = request.POST.get('number_of_attendees')
-        firstName = request.POST.get('first_name')  
-        lastName = request.POST.get('last_name')  
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
         notes = request.POST.get('notes')
         email = request.POST.get('email')
-        phoneNumber = request.POST.get('phone_number')  
-
-        # Create a new reservation instance and save it
-        reservation_instance = Reservation(
-            event_space_1=event_space_1_id,
-            event_space_2=event_space_2_id,
+        phone_number = request.POST.get('phone_number')
+        event_room = Room.objects.get(pk=event_room_id)
+        event_style = Style.objects.get(pk=event_style_id)
+        coffee_break = CoffeeBreak.objects.get(pk=coffee_break_id)
+        reservation = Reservation(
+            event_room=event_room,
+            event_style=event_style,
+            coffee_break=coffee_break,
             date_and_time=date_and_time,
             number_of_attendees=number_of_attendees,
-            first_name=firstName,
-            last_name=lastName,
             notes=notes,
             email=email,
-            phone_number=phoneNumber,
+            phone_number=phone_number,
+            first_name=first_name,
+            last_name=last_name,
         )
-        reservation_instance.save()
+        reservation.save()
 
-        # Placeholder: Send confirmation email
-        send_reservation_email(email, "Your reservation details...")
+        send_mail(
+            'Reservation Confirmation',
+            render_to_string ('email.html', {'reservation': reservation}),
+            "abbasgamer9999@gmail.com",
+            [email],
+            fail_silently=False)
 
     context = {
         'rooms': rooms,
@@ -104,15 +130,8 @@ def reservation(request):
     
     return render(request, 'reservation.html', context)
 
-def send_reservation_email(user_email, reservation_data):
-    subject = 'Reservation Confirmation'
-    message = f'Thank you for your reservation. Here are the details:\n\n{reservation_data}'
-    from_email = 'settings.EMAIL_HOST_USER'  # Replace with your email
-    recipient_list = [user_email]
-
-    send_mail(subject, message, from_email, recipient_list)
-    
-    return render('reservation.html')
 
 def error(request, exception=None):
     return render(request, 'error.html', status=404)
+
+

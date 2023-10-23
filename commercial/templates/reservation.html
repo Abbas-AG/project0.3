@@ -41,11 +41,11 @@
 
             <div class="info-item">
                 <input name="number_of_attendees" type="number" placeholder="Number of people" required id="second-quantity">
-                <input name="date_and_time" type="text" placeholder="Reservation Time" >
+                <input name="date_and_time" type="datetime-local" placeholder="Reservation Time" >
             </div>
 
             <div id="info-choice">
-                <select name="event_space_1" class="mySelect" name="style">
+                <select name="event_style" class="mySelect" name="style">
                     <option value="" disabled selected>Style of Reservation</option>
                     {% for style in styles %}
                         <option value="{{ style.id }}">{{ style.name }}</option>
@@ -54,7 +54,7 @@
             </div>
 
             <div id="info-choice">
-                <select name="event_space_2" class="mySelect" name="room">
+                <select name="event_room" class="mySelect" name="room">
                     <option value="" disabled selected>Room Reservation</option>
                     {% for room in rooms %}
                         <option value="{{ room.id }}">{{ room.name }}</option>

@@ -53,18 +53,24 @@ class CoffeeBreak(models.Model):
         return self.name
 
 class Reservation(models.Model):
-    firstName = models.CharField(max_length=255, null=True)
-    lastName = models.CharField(max_length=255, null=True)
+    first_name = models.CharField(max_length=255, null=True)
+    last_name = models.CharField(max_length=255, null=True)
     email = models.EmailField(max_length=256, null=True)
-    phoneNumber = models.CharField(max_length=15, null=True)
-    event_space = models.ForeignKey(Room, on_delete=models.CASCADE, null=False)
+    phone_number = models.CharField(max_length=255, null=True)
+    event_room = models.ForeignKey(Room, on_delete=models.CASCADE, null=True, blank=True)
+    event_style = models.ForeignKey(Style, on_delete=models.CASCADE, null=True, blank=True)
     coffee_break = models.ForeignKey(CoffeeBreak, on_delete=models.SET_NULL, null=True)
     date_and_time = models.DateTimeField(null=False)
     number_of_attendees = models.IntegerField(null=False)
-    notes = models.CharField(max_length=255, null=True)
+    notes = models.TextField(blank=True, null=True)
+
+
+
     
-    def __str__(self):
-        return f'{self.event_space} , {self.coffee_break} ,on {self.date_and_time}'
+    
+def __str__(self):
+    return f'{self.event_room} , {self.coffee_break} ,on {self.date_and_time}'
+
 
 class UserFavorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=False, related_name='favorites')
@@ -73,5 +79,14 @@ class UserFavorite(models.Model):
     def __str__(self):
         return self.special_offer
 
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=50,null=True)
+    email = models.CharField(max_length=50,null=True)
+    subject = models.CharField(max_length=50,null=True)
+    message = models.TextField(null=True)
+    
+    def __str__(self):
+        return self.full_name
 
 
