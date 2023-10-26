@@ -268,27 +268,39 @@ body {
 }
 
 #top-row h2 {
+  margin: 30px;
   font-size: 1.8rem;
 }
 
- #book {
-  width: 6rem;
+#book {
+  width: 6.5rem;
   background-color: #1A8CF7;
   border: none;
   border-radius: 5px;
   color: #ffffff;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.3rem;
   padding: 5px 0px;
   margin-bottom: 10px;
   cursor: pointer;
+  align-self: flex-start;
+  margin-right: 6px;
 }
 
+#books {
+  align-self: flex-start;
+  margin-top: 25px;
+  margin-left: 10px;
+}
+#room_d{
+  font-size: 1.4em;
+  margin: 15px;
+}
 
 #bottom-row {
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: flex-start;
 
 }
 
@@ -296,17 +308,28 @@ body {
   color: #000000;
   font-size: 1rem;
   max-width: 50ch;
+  margin-left: 5px;
 }
 
 #row-2 button{
   margin:1rem auto;
 }
+
 #row-3 #book{
-  width: 7rem;
+  width: 8rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 
 }
+
+#book {
+  transition: transform 0.3s; 
+}
+
+#book:hover {
+  transform: scale(1.1) 
+}
+
 
 /* ----------rooms---------------------- */
 

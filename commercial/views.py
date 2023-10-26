@@ -121,7 +121,7 @@ def reservation(request):
             "abbasgamer9999@gmail.com",
             [email],
             fail_silently=False)
-
+    
     context = {
         'rooms': rooms,
         'styles': styles,
@@ -129,7 +129,7 @@ def reservation(request):
     }
     
     return render(request, 'reservation.html', context)
-
+    
 
 def error(request, exception=None):
     return render(request, 'error.html', status=404)
