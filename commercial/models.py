@@ -45,7 +45,7 @@ class Style(models.Model):
 class CoffeeBreak(models.Model):
     name = models.CharField(max_length=255, null=False)
     menu_items = models.TextField(null=True)
-    pricing_per_person = models.DecimalField(max_digits=10, decimal_places=2, null=False)
+    pricing_per_person = models.DecimalField(max_digits=10, decimal_places=0, null=False)
     serving_sizes = models.CharField(max_length=255, null=True)
     picture = models.ImageField(upload_to='coffee_breaks/', null=True)
 
