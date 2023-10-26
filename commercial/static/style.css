@@ -217,6 +217,14 @@ body {
 
 }
 
+#hub-enterway-container img, #right-column img {
+	transition: transform 0.3s; 
+  }
+  
+  #hub-enterway-container img:hover, #right-column img:hover {
+    transform: scale(1.1) ;
+  }
+  
 
 
 /* ---------------------------------------------- */
@@ -494,6 +502,7 @@ body {
   flex-direction: column;
 
 }
+
 
 
 } 
