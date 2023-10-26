@@ -217,11 +217,11 @@ body {
 
 }
 
-#hub-enterway-container img, #right-column img {
+ #right-column img {
 	transition: transform 0.3s; 
   }
   
-  #hub-enterway-container img:hover, #right-column img:hover {
+  #right-column img:hover {
     transform: scale(1.1) ;
   }
   
@@ -259,8 +259,8 @@ body {
 
 #left-column ,#top-row{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: flex-start;
   flex-direction: column;
 }
 
@@ -276,7 +276,9 @@ body {
 }
 
 #top-row h2 {
+  
   margin: 30px;
+  margin-left: 6px;
   font-size: 1.8rem;
 }
 
