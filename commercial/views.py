@@ -9,7 +9,6 @@ from .models import SpecialOffer, Room, Style, CoffeeBreak, Reservation
 from django.template.loader import render_to_string
 
 
-# Create your views here.
 
 def index(request):
     rooms = Room.objects.all()
@@ -44,14 +43,6 @@ def coffeebreak(request):
             'coffeebreaks': coffeebreaks
     })
 
-# def home(request):
-#     rooms = Room.objects.all()
-
-#     styles = Style.objects.all()
-#     return render(request, 'home.html', {
-#         'rooms': rooms,
-#         'styles': styles
-#     })
 
 
 def coffee(request):

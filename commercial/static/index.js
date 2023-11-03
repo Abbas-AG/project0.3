@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded",  ()=> {
 
-//   footer code 
   const footer = document.querySelector('#footer');
   window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded",  ()=> {
   });
   
 
- //  input code
  const quantityInput = document.getElementById('quantity');
 
  quantityInput.addEventListener('input', () => {
