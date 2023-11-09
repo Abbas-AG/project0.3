@@ -239,7 +239,7 @@ body {
   box-shadow: 4px 4px 3px #1A8CF7;
   padding: 0.6rem;
   padding-left: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 #row-3{
@@ -283,7 +283,8 @@ body {
 }
 
 #book {
-  width: 6.5rem;
+  width: 8.5rem;
+  height: 2.7rem;
   background-color: #1A8CF7;
   border: none;
   border-radius: 5px;
@@ -326,7 +327,7 @@ body {
 }
 
 #row-3 #book{
-  width: 8rem;
+  width: 9rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 
@@ -349,7 +350,7 @@ body {
   align-items:center;
   width: 82%;
   background-color: #ffffff;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   
 }
 
